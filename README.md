@@ -1,5 +1,5 @@
-PubSub
-======
+#PubSub
+[![npm version](https://badge.fury.io/js/js-pubsub.svg)](https://badge.fury.io/js/js-pubsub)
 
 A simple Pub/Sub implementation for JavaScript that also contains an ask/tell paradigm.
 
