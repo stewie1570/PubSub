@@ -14,17 +14,17 @@ describe("PubSub", function ()
         it("should throw exception on ask request with no teller", function ()
         {
             //Arrange
-            var exception = null;
+            var exceptionMessage = null;
 
             //Act
             try
             {
                 pubsub.askFor("something that doesn't exist");
             }
-            catch (ex) { exception = ex; }
+            catch (ex) { exceptionMessage = ex.message; }
 
             //Assert
-            expect(exception).to.equal("No available answer for 'something that doesn't exist'.");
+            expect(exceptionMessage).to.equal("No available answer for 'something that doesn't exist'.");
         });
 
         it("should allow tellers to answer questions", function ()
