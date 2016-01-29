@@ -1,5 +1,5 @@
 {
-  "name": "pubsubjs",
+  "name": "js-pubsub",
   "version": "1.0.0",
   "directories": {
     "lib": "./lib"
