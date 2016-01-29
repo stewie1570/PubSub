@@ -1,4 +1,4 @@
-Pubsub = function ()
+export function Pubsub()
 {
     this.pubSubCallBacks = [];
     this.askTellCallBacks = [];

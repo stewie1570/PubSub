@@ -1,4 +1,6 @@
-﻿describe("PubSub", function ()
+﻿import { Pubsub } from '../src/pubsub';
+
+describe("PubSub", function ()
 {
     var pubsub = null;
 
@@ -22,7 +24,7 @@
             catch (ex) { exception = ex; }
 
             //Assert
-            expect(exception).toBe("No available answer for 'something that doesn't exist'.");
+            expect(exception).to.equal("No available answer for 'something that doesn't exist'.");
         });
 
         it("should allow tellers to answer questions", function ()
@@ -32,7 +34,7 @@
             pubsub.answerFor("topic", function (p1) { return "answer" + p1; });
 
             //Assert
-            expect(pubsub.askFor("topic", 1)).toBe("answer1");
+            expect(pubsub.askFor("topic", 1)).to.equal("answer1");
         });
 
         it("should use only the most recent answer provider.", function ()
@@ -43,7 +45,7 @@
             pubsub.answerFor("topic", function () { return "new answer"; });
 
             //Assert
-            expect(pubsub.askFor("topic", 1)).toBe("new answer");
+            expect(pubsub.askFor("topic", 1)).to.equal("new answer");
         });
     });
 
@@ -65,7 +67,7 @@
             pubsub.publish("subscribed topic");
 
             //Assert
-            expect(receivedCallback).toBeTruthy();
+            expect(receivedCallback).to.equal(true);
         });
 
         it("publish to different topic doesn't receive callback", function ()
@@ -75,7 +77,7 @@
             pubsub.publish("unsubscribed topic");
 
             //Assert
-            expect(receivedCallback).toBeFalsy();
+            expect(receivedCallback).to.equal(false);
         });
 
         it("publish to same topic receives callback with correct argument", function ()
@@ -88,7 +90,7 @@
             pubsub.publish("arg test", "it worked");
 
             //Assert
-            expect(argResult).toBe("it worked");
+            expect(argResult).to.equal("it worked");
         });
     });
 });
