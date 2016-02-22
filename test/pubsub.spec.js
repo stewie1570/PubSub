@@ -25,7 +25,7 @@ describe("PubSub", () => {
         it("should allow tellers to answer questions", () => {
             //Arrange
             //Act
-            pubsub.answerFor("topic", function (p1) { return "answer" + p1; });
+            pubsub.answerFor("topic", p1 => `answer${p1}`);
 
             //Assert
             expect(pubsub.askFor("topic", 1)).to.equal("answer1");
@@ -34,8 +34,8 @@ describe("PubSub", () => {
         it("should use only the most recent answer provider.", () => {
             //Arrange
             //Act
-            pubsub.answerFor("topic", () => { return "old answer"; });
-            pubsub.answerFor("topic", () => { return "new answer"; });
+            pubsub.answerFor("topic", () => "old answer");
+            pubsub.answerFor("topic", () => "new answer");
 
             //Assert
             expect(pubsub.askFor("topic", 1)).to.equal("new answer");

@@ -7,15 +7,16 @@ A simple Pub/Sub implementation for JavaScript that also contains an ask/tell pa
 
 Here is some example usage from some of the tests:
 
-        it("publish to same subscribed topic receives callback", () => {
+        it("publish to same topic receives callback with correct argument", () => {
             //Arrange
-            pubsub.subscribe({ toTopic: "subscribed topic", withCallback: () => receivedCallback = true });
-            
+            var argResult;
+            pubsub.subscribe({ toTopic: "arg test", withCallback: result => argResult = result });
+
             //Act
-            pubsub.publish({ toTopic: "subscribed topic" });
+            pubsub.publish({ toTopic: "arg test", withData: "it worked" });
 
             //Assert
-            expect(receivedCallback).to.equal(true);
+            expect(argResult).to.equal("it worked");
         });
         
         it("should allow tellers to answer questions", () => {
