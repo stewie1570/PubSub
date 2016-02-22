@@ -19,10 +19,10 @@ Here is some example usage from some of the tests:
             expect(argResult).to.equal("it worked");
         });
         
-        it("should allow tellers to answer questions", () => {
+        it("should allow tellers to answer questions using parameters for context", () => {
             //Arrange
             //Act
-            pubsub.answerFor("topic", function (p1) { return "answer" + p1; });
+            pubsub.answerFor("topic", p1 => `answer${p1}`);
 
             //Assert
             expect(pubsub.askFor("topic", 1)).to.equal("answer1");
