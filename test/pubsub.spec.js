@@ -1,24 +1,19 @@
 ﻿import { Pubsub } from '../src/pubsub';
 
-describe("PubSub", function ()
-{
+describe("PubSub", () => {
     var pubsub = null;
 
-    describe("Ask/Answer", function ()
-    {
-        beforeEach(function ()
-        {
+    describe("Ask/Answer", () => {
+        beforeEach(() => {
             pubsub = new Pubsub();
         });
 
-        it("should throw exception on ask request with no teller", function ()
-        {
+        it("should throw exception on ask request with no teller", () => {
             //Arrange
             var exceptionMessage = null;
 
             //Act
-            try
-            {
+            try {
                 pubsub.askFor("something that doesn't exist");
             }
             catch (ex) { exceptionMessage = ex.message; }
@@ -27,8 +22,7 @@ describe("PubSub", function ()
             expect(exceptionMessage).to.equal("No available answer for 'something that doesn't exist'.");
         });
 
-        it("should allow tellers to answer questions", function ()
-        {
+        it("should allow tellers to answer questions", () => {
             //Arrange
             //Act
             pubsub.answerFor("topic", function (p1) { return "answer" + p1; });
@@ -37,57 +31,52 @@ describe("PubSub", function ()
             expect(pubsub.askFor("topic", 1)).to.equal("answer1");
         });
 
-        it("should use only the most recent answer provider.", function ()
-        {
+        it("should use only the most recent answer provider.", () => {
             //Arrange
             //Act
-            pubsub.answerFor("topic", function () { return "old answer"; });
-            pubsub.answerFor("topic", function () { return "new answer"; });
+            pubsub.answerFor("topic", () => { return "old answer"; });
+            pubsub.answerFor("topic", () => { return "new answer"; });
 
             //Assert
             expect(pubsub.askFor("topic", 1)).to.equal("new answer");
         });
     });
 
-    describe("Publish/Subscribe", function ()
-    {
+    describe("Publish/Subscribe", () => {
         var receivedCallback = null;
 
-        beforeEach(function ()
-        {
+        beforeEach(() => {
             receivedCallback = false;
             pubsub = new Pubsub();
-            pubsub.subscribe("subscribed topic", function () { receivedCallback = true; });
         });
 
-        it("publish to same subscribed topic receives callback", function ()
-        {
+        it("publish to same subscribed topic receives callback", () => {
             //Arrange
+            pubsub.subscribe({ toTopic: "subscribed topic", withCallback: () => receivedCallback = true });
+            
             //Act
-            pubsub.publish("subscribed topic");
+            pubsub.publish({ toTopic: "subscribed topic" });
 
             //Assert
             expect(receivedCallback).to.equal(true);
         });
 
-        it("publish to different topic doesn't receive callback", function ()
-        {
+        it("publish to different topic doesn't receive callback", () => {
             //Arrange
             //Act
-            pubsub.publish("unsubscribed topic");
+            pubsub.publish({ toTopic: "unsubscribed topic" });
 
             //Assert
             expect(receivedCallback).to.equal(false);
         });
 
-        it("publish to same topic receives callback with correct argument", function ()
-        {
+        it("publish to same topic receives callback with correct argument", () => {
             //Arrange
             var argResult;
-            pubsub.subscribe("arg test", function (result) { argResult = result; });
+            pubsub.subscribe({ toTopic: "arg test", withCallback: result => argResult = result });
 
             //Act
-            pubsub.publish("arg test", "it worked");
+            pubsub.publish({ toTopic: "arg test", withData: "it worked" });
 
             //Assert
             expect(argResult).to.equal("it worked");

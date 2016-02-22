@@ -26,14 +26,14 @@ export class Pubsub {
         this.askTellCallBacks.push({ topic: topic, callback: provider });
     };
 
-    subscribe(topic, callback) {
-        this.pubSubCallBacks.push({ topic: topic, callback: callback });
+    subscribe({toTopic, withCallback}) {
+        this.pubSubCallBacks.push({ topic: toTopic, callback: withCallback });
     };
 
-    publish(topic, arg) {
+    publish({toTopic, withData}) {
         for (var key in this.pubSubCallBacks) {
-            if (topic == this.pubSubCallBacks[key].topic)
-                this.pubSubCallBacks[key].callback(arg);
+            if (toTopic == this.pubSubCallBacks[key].topic)
+                this.pubSubCallBacks[key].callback(withData);
         }
     };
 }
