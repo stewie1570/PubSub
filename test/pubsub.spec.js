@@ -22,7 +22,7 @@ describe("PubSub", () => {
             expect(exceptionMessage).to.equal("No available answer for 'something that doesn't exist'.");
         });
 
-        it("should allow tellers to answer questions", () => {
+        it("should allow tellers to answer questions using parameters for context", () => {
             //Arrange
             //Act
             pubsub.answerFor("topic", p1 => `answer${p1}`);
@@ -38,7 +38,7 @@ describe("PubSub", () => {
             pubsub.answerFor("topic", () => "new answer");
 
             //Assert
-            expect(pubsub.askFor("topic", 1)).to.equal("new answer");
+            expect(pubsub.askFor("topic")).to.equal("new answer");
         });
     });
 
