@@ -1,4 +1,4 @@
-#PubSub
+# PubSub
 [![Build](https://travis-ci.org/stewie1570/PubSub.svg)](https://travis-ci.org/stewie1570/PubSub)
 [![npm version](https://badge.fury.io/js/js-pubsub.svg)](https://badge.fury.io/js/js-pubsub)
 
