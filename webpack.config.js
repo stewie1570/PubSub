@@ -2,18 +2,26 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-    entry: "./src/pubsub.js",
+    entry: './src/index.js',
     output: {
         path: __dirname,
-        filename: "index.js",
-        library: 'Pubsub',
+        filename: "./build/index.js",
+        library: 'max-concurrency',
         libraryTarget: 'umd'
     },
     module: {
         loaders: [
-            { test: /\.js$/, loader: "babel-loader" }
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                exclude: /node_modules/,
+                query: {
+                    presets: ['env']
+                }
+            }
         ]
     },
-    watch: true,
-    devtool: 'source-map'
+    stats: {
+        colors: true
+    }
 };

@@ -1,4 +1,4 @@
-﻿import { Pubsub } from '../src/pubsub';
+﻿import { Pubsub } from '../pubsub';
 
 describe("PubSub", () => {
     var pubsub = null;
@@ -19,7 +19,7 @@ describe("PubSub", () => {
             catch (ex) { exceptionMessage = ex.message; }
 
             //Assert
-            expect(exceptionMessage).to.equal("No available answer for 'something that doesn't exist'.");
+            expect(exceptionMessage).toEqual("No available answer for 'something that doesn't exist'.");
         });
 
         it("should allow tellers to answer questions using parameters for context", () => {
@@ -28,7 +28,7 @@ describe("PubSub", () => {
             pubsub.answerFor("topic", p1 => `answer${p1}`);
 
             //Assert
-            expect(pubsub.askFor("topic", 1)).to.equal("answer1");
+            expect(pubsub.askFor("topic", 1)).toEqual("answer1");
         });
 
         it("should use only the most recent answer provider.", () => {
@@ -38,7 +38,7 @@ describe("PubSub", () => {
             pubsub.answerFor("topic", () => "new answer");
 
             //Assert
-            expect(pubsub.askFor("topic")).to.equal("new answer");
+            expect(pubsub.askFor("topic")).toEqual("new answer");
         });
     });
 
@@ -58,7 +58,7 @@ describe("PubSub", () => {
             pubsub.publish({ toTopic: "subscribed topic" });
 
             //Assert
-            expect(receivedCallback).to.equal(true);
+            expect(receivedCallback).toEqual(true);
         });
 
         it("publish to different topic doesn't receive callback", () => {
@@ -67,7 +67,7 @@ describe("PubSub", () => {
             pubsub.publish({ toTopic: "unsubscribed topic" });
 
             //Assert
-            expect(receivedCallback).to.equal(false);
+            expect(receivedCallback).toEqual(false);
         });
 
         it("publish to same topic receives callback with correct argument", () => {
@@ -79,7 +79,7 @@ describe("PubSub", () => {
             pubsub.publish({ toTopic: "arg test", withData: "it worked" });
 
             //Assert
-            expect(argResult).to.equal("it worked");
+            expect(argResult).toEqual("it worked");
         });
     });
 });
