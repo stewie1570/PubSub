@@ -2,11 +2,11 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-    entry: './src/index.js',
+    entry: './src/pubsub.js',
     output: {
         path: __dirname,
         filename: "./build/index.js",
-        library: 'max-concurrency',
+        library: 'pubsub',
         libraryTarget: 'umd'
     },
     module: {

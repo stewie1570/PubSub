@@ -1,9 +1,6 @@
 {
   "name": "js-pubsub",
   "version": "2.0.4",
-  "directories": {
-    "lib": "./lib"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/stewie1570/PubSub"
@@ -12,7 +9,7 @@
     "pubsub",
     "publish subscribe"
   ],
-  "main": "lib/index.js",
+  "main": "build/pubsub.js",
   "description": "A simple Pub/Sub implementation for JavaScript that also contains an ask/tell paradigm.",
   "scripts": {
     "test": "jest --coverage",
