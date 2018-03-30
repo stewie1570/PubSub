@@ -9,7 +9,7 @@
     "pubsub",
     "publish subscribe"
   ],
-  "main": "build/pubsub.js",
+  "main": "build/index.js",
   "description": "A simple Pub/Sub implementation for JavaScript that also contains an ask/tell paradigm.",
   "scripts": {
     "test": "jest --coverage",
