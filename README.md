@@ -10,6 +10,8 @@ Here is some example usage from some of the tests:
 ```jsx
 import { Pubsub } from 'js-pubsub'
 
+var pubsub = new Pubsub();
+
 it("publish to same topic receives callback with correct argument", () => {
     //Arrange
     var argResult;
