@@ -1,7 +1,7 @@
-﻿import { Pubsub } from '../pubsub';
+﻿import { Pubsub } from '.';
 
 describe("PubSub", () => {
-    var pubsub = null;
+    let pubsub: Pubsub = null;
 
     describe("Ask/Answer", () => {
         beforeEach(() => {

@@ -9,28 +9,28 @@
     "pubsub",
     "publish subscribe"
   ],
-  "main": "build/index.js",
+  "main": "lib/index.js",
   "description": "A simple Pub/Sub implementation for JavaScript that also contains an ask/tell paradigm.",
   "scripts": {
-    "test": "jest --coverage",
+    "test": "jest --coverage --modulePathIgnorePatterns=lib/",
     "tdd": "jest --watch",
-    "build": "npm run test && webpack",
-    "prepare": "npm run build",
-    "prepublishOnly": "npm run build"
+    "build": "yarn run test && del-cli ./lib && tsc",
+    "prepublishOnly": "yarn run build"
   },
   "author": "Stewart Anderson",
-  "license": "Ms-PL",
+  "license": "GPL-3.0",
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-jest": "^22.4.0",
-    "babel-loader": "^7.1.2",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.6.1",
-    "jest": "^22.4.0",
-    "regenerator-runtime": "^0.11.1",
-    "webpack": "^3.11.0"
+    "@babel/core": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
+    "@babel/preset-typescript": "^7.6.0",
+    "@types/jest": "^24.0.18",
+    "@types/lodash": "^4.14.141",
+    "babel-jest": "^24.9.0",
+    "del-cli": "^3.0.0",
+    "jest": "^24.9.0",
+    "typescript": "^3.6.3"
   },
   "files": [
-    "build"
+    "lib"
   ]
 }
