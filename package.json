@@ -12,7 +12,7 @@
   "main": "lib/index.js",
   "description": "A simple Pub/Sub implementation for JavaScript that also contains an ask/tell paradigm.",
   "scripts": {
-    "test": "jest --coverage --modulePathIgnorePatterns=lib/",
+    "test": "jest --coverage --colors --modulePathIgnorePatterns=lib/",
     "tdd": "jest --watch",
     "build": "yarn run test && del-cli ./lib && tsc",
     "prepublishOnly": "yarn run build"
