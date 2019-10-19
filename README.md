@@ -1,5 +1,6 @@
 # PubSub
 [![Build](https://travis-ci.org/stewie1570/PubSub.svg)](https://travis-ci.org/stewie1570/PubSub)
+[![Codecov](https://img.shields.io/codecov/c/github/stewie1570/PubSub)](https://codecov.io/gh/stewie1570/PubSub)
 [![npm version](https://badge.fury.io/js/js-pubsub.svg)](https://badge.fury.io/js/js-pubsub)
 
 A simple Pub/Sub implementation for JavaScript that also contains an ask/tell paradigm.
