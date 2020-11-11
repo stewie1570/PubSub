@@ -1,5 +1,5 @@
 # PubSub
-[![Build](https://travis-ci.org/stewie1570/PubSub.svg)](https://travis-ci.org/stewie1570/PubSub)
+[![Build](https://github.com/stewie1570/PubSub/workflows/Build/badge.svg)](https://github.com/stewie1570/PubSub/actions)
 [![Codecov](https://img.shields.io/codecov/c/github/stewie1570/PubSub)](https://codecov.io/gh/stewie1570/PubSub)
 [![npm version](https://badge.fury.io/js/js-pubsub.svg)](https://badge.fury.io/js/js-pubsub)
 
